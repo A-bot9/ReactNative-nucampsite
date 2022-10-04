@@ -17,7 +17,7 @@ const RenderCampsite = (props) => {
 				<Text style={{ margin: 20 }}>{campsite.description}</Text>
 				<Icon
 					onPress={() =>
-						props.isFavorite ? console.log('Already set a favorite') : props.markFavorite()
+						props.isFavorite ? console.log('Already set as a favorite') : props.markFavorite()
 					}
 					name={props.isFavorite ? 'heart' : 'heart-o'}
 					type="font-awesome"
