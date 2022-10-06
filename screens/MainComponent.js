@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { Platform, View, StyleSheet, Text, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import Constants from 'expo-constants';
@@ -7,6 +9,10 @@ import {
 	DrawerContentScrollView,
 	DrawerItemList,
 } from '@react-navigation/drawer';
+import { fetchPartners } from '../features/partners/partnersSlice';
+import { fetchCampsites } from '../features/campsites/campsitesSlice';
+import { fetchPromotions } from '../features/promotions/promotionsSlice';
+import { fetchComments } from '../features/comments/commentsSlice';
 import DirectoryScreen from './DirectoryScreen';
 import CampsiteInfoScreen from './CampsiteInfoScreen';
 import HomeScreen from './HomeScreen';
@@ -127,6 +133,15 @@ const CustomDrawerContent = (props) => {
 };
 
 const Main = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchCampsites());
+		dispatch(fetchPromotions());
+		dispatch(fetchPartners());
+		dispatch(fetchComments());
+	}, [dispatch]);
+
 	return (
 		<View
 			style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}
