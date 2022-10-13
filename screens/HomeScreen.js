@@ -40,6 +40,7 @@ const HomeScreen = () => {
 	const promotions = useSelector((state) => state.promotions);
 	const partners = useSelector((state) => state.partners);
 
+	console.log(campsites);
 	const featCampsite = campsites.campsitesArray.find((item) => item.featured);
 	const featPromotions = promotions.promotionsArray.find((item) => item.featured);
 	const featPartners = partners.partnersArray.find((item) => item.featured);
